@@ -1,0 +1,36 @@
+appId: com.cognix.browser
+productName: Cognix
+directories:
+  buildResources: build
+icon: resources/icon.png
+files:
+  - '!**/.vscode/*'
+  - '!src/*'
+  - '!electron.vite.config.{js,ts,mjs,cjs}'
+  - '!{.eslintignore,.eslintrc.cjs,.prettierignore,.prettierrc.yaml,dev-app-update.yml,CHANGELOG.md,README.md}'
+  - '!{tsconfig.json,tsconfig.node.json,tsconfig.web.json}'
+mac:
+  category: public.app-category.productivity
+  target:
+    - dmg
+win:
+  target:
+    - nsis
+  publish:
+    - provider: github
+      owner: YOUR_GITHUB_USERNAME
+      repo: cognix
+  fileAssociations:
+    - ext: .htm
+      name: Cognix HTML Document
+    - ext: .html
+      name: Cognix HTML Document
+nsis:
+  perMachine: false
+  oneClick: false
+  allowToChangeInstallationDirectory: true
+  createDesktopShortcut: true
+  include: build/installer.nsh
+linux:
+  target:
+    - AppImage
